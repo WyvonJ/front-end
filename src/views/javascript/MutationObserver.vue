@@ -1,26 +1,22 @@
 <template>
-  <div class="asynchronous">
-    异步
+  <div class="mutation-observer">
+
   </div>
 </template>
 
 <script>
-// 异步
-
+// MutationObserver
 export default {
-  name: 'Asynchronous',
-  components: {
-
-  },
+  name: 'MutationObserver',
   data() {
     return {
+
     };
   },
 };
 </script>
 
 <style lang="scss">
-.asynchronous {
-
+.mutation-observer {
 }
 </style>

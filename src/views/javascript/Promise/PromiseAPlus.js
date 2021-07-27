@@ -42,20 +42,23 @@ export default class PromiseAPlus {
     this.onRejected = [];
 
     /**
-     *
-     * @param {any} val
+     * 作为参数的resolve方法
+     * @param {any} val resolve的值
      */
     const resolve = (val) => {
       if (this.status === 'pending') {
+        // 进行状态的改变
         this.status = 'fulfilled';
         this.value = val;
+        // 成功回调的执行
+        // 当promise被resolve的时候, 依次调用所有的then中的onFulfilled方法, 并将值传入
         this.onFulfilled.forEach((f) => f(val));
       }
     };
 
     /**
-     *
-     * @param {any} err
+     * 作为参数的reject方法
+     * @param {any} err reject的拒因
      */
     const reject = (err) => {
       if (this.status === 'pending') {
@@ -72,9 +75,13 @@ export default class PromiseAPlus {
     }
   }
 
-  static resolve() {}
+  static resolve() {
+    // return new PromiseAPlus((resolve) => resolve(value));
+  }
 
-  static reject() {}
+  static reject() {
+    // return new PromiseAPlus((resolve, reject) => reject(reason));
+  }
 
   static all() {}
 
@@ -89,6 +96,9 @@ export default class PromiseAPlus {
    */
   then(onFulfilled, onRejected) {
     let promise2;
+    // 如果onFulfilled或onRejected不是函数的话
+    // onFulfilled则定义为将x原样返回
+    // onRejected定义为抛出拒因的方法
     onFulfilled = typeof onFulfilled === 'function' ? onFulfilled : (x) => x;
     onRejected = typeof onRejected === 'function'
       ? onRejected
@@ -98,10 +108,13 @@ export default class PromiseAPlus {
     switch (this.status) {
       case 'pending':
         promise2 = new PromiseAPlus((resolve, reject) => {
+          // 如果还在pending状态, 则将对应的方法分别加到方法处理数组中
           this.onFulfilled.push(() => {
+            // 定义异步调用方法
             setTimeout(() => {
               try {
                 const x = onFulfilled(this.value);
+                // 处理then方法的返回值
                 ResolutionProcedure(promise2, x, resolve, reject);
               } catch (error) {
                 reject(error);
@@ -165,16 +178,20 @@ export default class PromiseAPlus {
 
 /**
  * 决议过程
+ * 将一个promise和一个值x输入, 将这个过程表示为[[Resolve]](promise, x)
+ * 如果x是一个thenable, 那么它会试图使promise采用x的状态, 前提是x的行为至少有一点像promise
+ * 否则, 它将用x的值执行promise
  * @param {PromiseAPlus} promise
  * @param {any} x
  * @param {Function} resolve
  * @param {Function} reject
  */
 function ResolutionProcedure(promise, x, resolve, reject) {
+  // 如果promise和x是同一个对象, 则抛出TypeError
   if (promise === x) {
     return reject(new TypeError('Same Promise'));
   }
-
+  // 如果x是一个promise, 使用它的状态
   if (x instanceof PromiseAPlus) {
     x.then(
       (xvalue) => {
@@ -185,39 +202,43 @@ function ResolutionProcedure(promise, x, resolve, reject) {
       },
     );
   }
-
+  // x为对象或者函数, 那么需要检测x是不是一个promise
   if (x !== null && (typeof x === 'object' || typeof x === 'function')) {
     try {
       const { then } = x;
+      // 如果有then方法, 那么就来改当前这个promise的值
       if (typeof then === 'function') {
         // 状态只能更改一次
-        let isuse = false;
+        let isUsed = false;
         try {
+          // 执行这个then方法, 将它的状态转移给新的promise
           then.call(
             x,
             (y) => {
-              if (!isuse) {
+              if (!isUsed) {
                 ResolutionProcedure(promise, y, resolve, reject);
-                isuse = true;
+                isUsed = true;
               }
             },
             (r) => {
               reject(r);
-              isuse = true;
+              isUsed = true;
             },
           );
         } catch (error) {
-          if (!isuse) {
+          if (!isUsed) {
             reject(error);
           }
         }
       } else {
+        // 没有then方法, 直接resolve
         resolve(x);
       }
     } catch (error) {
       reject(error);
     }
   } else {
+    // 如果x不是一个对象或函数, 也不是promise则直接resolve掉x
     resolve(x);
   }
 }

@@ -1,26 +1,23 @@
 <template>
-  <div class="asynchronous">
-    异步
+  <div class="http-request">
+
   </div>
 </template>
 
 <script>
-// 异步
-
+// HTTP请求
+// XHRHttpRequest, Fetch API, axios库
 export default {
-  name: 'Asynchronous',
-  components: {
-
-  },
+  name: 'HttpRequest',
   data() {
     return {
+
     };
   },
 };
 </script>
 
 <style lang="scss">
-.asynchronous {
-
+.http-request {
 }
 </style>

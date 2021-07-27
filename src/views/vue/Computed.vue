@@ -1,26 +1,22 @@
 <template>
-  <div class="asynchronous">
-    异步
+  <div class="computed">
+
   </div>
 </template>
 
 <script>
-// 异步
-
+// computed计算属性
 export default {
-  name: 'Asynchronous',
-  components: {
-
-  },
+  name: 'Computed',
   data() {
     return {
+
     };
   },
 };
 </script>
 
 <style lang="scss">
-.asynchronous {
-
+.computed {
 }
 </style>

@@ -9,7 +9,7 @@
       >
       </FeTabPane>
     </FeTabs>
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
@@ -25,6 +25,12 @@ export default {
         label: name,
       })),
     };
+  },
+  created() {
+    if (this.$route.name === 'JavaScript') {
+      const [{ name }] = this.tabs;
+      this.$router.push(`/javascript/${name}`);
+    }
   },
   methods: {
     handlerChange(path) {

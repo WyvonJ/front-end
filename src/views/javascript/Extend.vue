@@ -1,26 +1,22 @@
 <template>
-  <div class="asynchronous">
-    异步
+  <div class="extend">
+
   </div>
 </template>
 
 <script>
-// 异步
-
+// 继承
 export default {
-  name: 'Asynchronous',
-  components: {
-
-  },
+  name: 'Extend',
   data() {
     return {
+
     };
   },
 };
 </script>
 
 <style lang="scss">
-.asynchronous {
-
+.extend {
 }
 </style>

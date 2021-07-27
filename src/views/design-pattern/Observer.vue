@@ -1,26 +1,22 @@
 <template>
-  <div class="asynchronous">
-    异步
+  <div class="observer">
+
   </div>
 </template>
 
 <script>
-// 异步
-
+// 观察者模式
 export default {
-  name: 'Asynchronous',
-  components: {
-
-  },
+  name: 'Observer',
   data() {
     return {
+
     };
   },
 };
 </script>
 
 <style lang="scss">
-.asynchronous {
-
+.observer {
 }
 </style>

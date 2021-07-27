@@ -1,26 +1,22 @@
 <template>
-  <div class="asynchronous">
-    异步
+  <div class="proxy-reflection">
+
   </div>
 </template>
 
 <script>
-// 异步
-
+// 代理和反射
 export default {
-  name: 'Asynchronous',
-  components: {
-
-  },
+  name: 'ProxyReflection',
   data() {
     return {
+
     };
   },
 };
 </script>
 
 <style lang="scss">
-.asynchronous {
-
+.proxy-reflection {
 }
 </style>

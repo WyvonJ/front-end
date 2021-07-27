@@ -1,26 +1,22 @@
 <template>
-  <div class="asynchronous">
-    异步
+  <div class="events">
+
   </div>
 </template>
 
 <script>
-// 异步
-
+// DOM事件
 export default {
-  name: 'Asynchronous',
-  components: {
-
-  },
+  name: 'Events',
   data() {
     return {
+
     };
   },
 };
 </script>
 
 <style lang="scss">
-.asynchronous {
-
+.events {
 }
 </style>

@@ -1,26 +1,22 @@
 <template>
-  <div class="asynchronous">
-    异步
+  <div class="publish-subscribe">
+
   </div>
 </template>
 
 <script>
-// 异步
-
+// 发布订阅
 export default {
-  name: 'Asynchronous',
-  components: {
-
-  },
+  name: 'PublishSubscribe',
   data() {
     return {
+
     };
   },
 };
 </script>
 
 <style lang="scss">
-.asynchronous {
-
+.publish-subscribe {
 }
 </style>

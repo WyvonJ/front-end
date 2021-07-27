@@ -3,7 +3,8 @@
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/javascript">JavaScript</router-link> |
-      <router-link to="/css">CSS</router-link>
+      <router-link to="/css">CSS</router-link> |
+      <router-link to="/vue">Vue</router-link>
     </div>
     <router-view/>
   </div>

@@ -1,7 +1,11 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
+import JavaScriptRoutes from './javascript';
+import CssRoutes from './css';
+import VueRoutes from './vue';
 
+console.log('JavaScriptRoutes', JavaScriptRoutes);
 Vue.use(VueRouter);
 
 const routes = [
@@ -19,6 +23,7 @@ const routes = [
     component() {
       return import(/* webpackChunkName: "javascript" */ '../views/JavaScript.vue');
     },
+    children: JavaScriptRoutes,
   },
   {
     path: '/css',
@@ -26,6 +31,15 @@ const routes = [
     component() {
       return import(/* webpackChunkName: "css" */ '../views/Css.vue');
     },
+    children: CssRoutes,
+  },
+  {
+    path: '/vue',
+    name: 'Vue',
+    component() {
+      return import(/* webpackChunkName: "vue" */ '../views/Vue.vue');
+    },
+    children: VueRoutes,
   },
 ];
 

@@ -49,6 +49,7 @@ export default {
     },
     handlerTabPaneClick(pane) {
       this.current = pane.name;
+      this.$emit('change', this.current);
     },
   },
   mounted() {
@@ -73,7 +74,7 @@ export default {
       border-right: 1px solid #42b983;
       display: inline-block;
       width: 120px;
-      padding: auto 12px;
+      padding: 0 4px;
       text-align: center;
       color: #42b983;
       &.current {

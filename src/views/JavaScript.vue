@@ -1,25 +1,37 @@
 <template>
   <div class="javascript">
-    <FeTabs>
-      <FeTabPane name="EventLoop" label="事件循环">
-        <EventLoop />
-      </FeTabPane>
-      <FeTabPane name="CrossOrigin" label="跨域">
-        <CrossOrigin />
+    <FeTabs @change="handlerChange">
+      <FeTabPane
+        :name="tab.name"
+        :label="tab.label"
+        v-for="tab of tabs"
+        :key="tab.name"
+      >
       </FeTabPane>
     </FeTabs>
+    <router-view/>
   </div>
 </template>
 
 <script>
-import EventLoop from '@/components/javascript/EventLoop.vue';
-import CrossOrigin from '@/components/javascript/CrossOrigin.vue';
+import JavaScriptTabs from '@/router/javascript';
 
 export default {
   name: 'JavaScript',
-  components: {
-    EventLoop,
-    CrossOrigin,
+  data() {
+    return {
+      tabs: JavaScriptTabs.map(({ path, name }) => ({
+        name: path,
+        label: name,
+      })),
+    };
+  },
+  methods: {
+    handlerChange(path) {
+      if (!this.$route.path.includes(path)) {
+        this.$router.push(`/javascript/${path}`);
+      }
+    },
   },
 };
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="css">
+  <div class="vue">
     <FeTabs @change="handlerChange">
       <FeTabPane
         :name="tab.name"
@@ -14,13 +14,13 @@
 </template>
 
 <script>
-import CssTabs from '@/router/css';
+import VueTabs from '@/router/vue';
 
 export default {
-  name: 'Css',
+  name: 'Vue',
   data() {
     return {
-      tabs: CssTabs.map(({ path, name }) => ({
+      tabs: VueTabs.map(({ path, name }) => ({
         name: path,
         label: name,
       })),
@@ -29,7 +29,7 @@ export default {
   methods: {
     handlerChange(path) {
       if (!this.$route.path.includes(path)) {
-        this.$router.push(`/css/${path}`);
+        this.$router.push(`/vue/${path}`);
       }
     },
   },
@@ -37,6 +37,6 @@ export default {
 </script>
 
 <style lang="scss">
-.css {
+.vue {
 }
 </style>

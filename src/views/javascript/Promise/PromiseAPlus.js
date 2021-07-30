@@ -83,9 +83,14 @@ export default class PromiseAPlus {
     // return new PromiseAPlus((resolve, reject) => reject(reason));
   }
 
+  // TODO 实现
   static all() {}
 
   static race() {}
+
+  static any() {}
+
+  static allSettled() {}
 
   /**
    * then方法

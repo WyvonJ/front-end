@@ -1,5 +1,12 @@
 export default [
   {
+    path: 'basic',
+    name: 'JavaScrit基础',
+    component() {
+      return import(/* webpackChunkName: "Basic" */ '@/views/javascript/Basic.vue');
+    },
+  },
+  {
     path: 'eventloop',
     name: '事件循环',
     component() {
@@ -32,6 +39,20 @@ export default [
     name: 'Promise',
     component() {
       return import(/* webpackChunkName: "Promise" */ '@/views/javascript/Promise.vue');
+    },
+  },
+  {
+    path: 'deepcopy',
+    name: '深拷贝',
+    component() {
+      return import(/* webpackChunkName: "DeepCopy" */ '@/views/javascript/DeepCopy.vue');
+    },
+  },
+  {
+    path: 'throttledebounce',
+    name: '防抖&节流',
+    component() {
+      return import(/* webpackChunkName: "ThrottleDebounce" */ '@/views/javascript/ThrottleDebounce.vue');
     },
   },
 ];

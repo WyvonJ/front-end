@@ -1,12 +1,16 @@
 <template>
   <button class="fe-button" @click="handlerClick">
-    <slot />
+    <span v-if="label">{{ label }}</span>
+    <slot v-else/>
   </button>
 </template>
 
 <script>
 export default {
   name: 'FeButton',
+  props: {
+    label: String,
+  },
   methods: {
     handlerClick() {
       this.$emit('click');

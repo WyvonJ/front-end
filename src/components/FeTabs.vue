@@ -67,16 +67,22 @@ export default {
 <style lang="scss">
 .fe-tabs {
   &__header {
-    border: 1px solid #42b983;
+    border-bottom: none;
     text-align: left;
     &--label {
       cursor: pointer;
-      border-right: 1px solid #42b983;
+      border: 1px solid #42b983;
+      margin-bottom: 2px;
+      margin-right: 2px;
       display: inline-block;
       width: 120px;
       padding: 0 4px;
       text-align: center;
       color: #42b983;
+      transition: background-color 300ms ease;
+      &:hover {
+        background-color: #42b98357;
+      }
       &.current {
         color: white;
         background-color: #42b983;

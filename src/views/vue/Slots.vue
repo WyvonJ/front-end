@@ -1,13 +1,13 @@
 <template>
-  <div class="prototype-chain">
+  <div class="slots">
     事件循环
   </div>
 </template>
 
 <script>
-// 原型链
+// 插槽
 export default {
-  name: 'PrototypeChain',
+  name: 'Slots',
   components: {
 
   },
@@ -20,7 +20,7 @@ export default {
 </script>
 
 <style lang="scss">
-.prototype-chain {
+.slots {
 
 }
 </style>

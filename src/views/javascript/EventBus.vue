@@ -1,13 +1,12 @@
 <template>
-  <div class="array-flattern">
-
+  <div class="event-bus">
   </div>
 </template>
 
 <script>
-// 数组扁平化
+// 事件总线
 export default {
-  name: 'ArrayFlattern',
+  name: 'EventBus',
   data() {
     return {
 
@@ -17,6 +16,6 @@ export default {
 </script>
 
 <style lang="scss">
-.array-flattern {
+.event-bus {
 }
 </style>

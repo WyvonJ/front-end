@@ -80,6 +80,7 @@ export default {
       text-align: center;
       color: #42b983;
       transition: background-color 300ms ease;
+      user-select: none;
       &:hover {
         background-color: #42b98357;
       }

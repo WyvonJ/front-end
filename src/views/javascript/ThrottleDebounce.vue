@@ -1,6 +1,8 @@
 <template>
   <div class="throttle-debounce">
-
+    <FeButton @click="handlerDebounce">
+      防抖debounce
+    </FeButton>
   </div>
 </template>
 
@@ -8,19 +10,20 @@
 // 防抖节流
 import { throttle, debounce } from './ThrottleDebounce/throttle-debounce';
 
-console.log(throttle, debounce);
-
 export default {
   name: 'ThrottleDebounce',
   components: {
 
   },
   data() {
-    // console.log(throttle);
-    // console.log(debounce);
     return {
-
+      throttle,
     };
+  },
+  created() {
+    this.handlerDebounce = debounce(1000, () => {
+      console.log('debounce');
+    });
   },
 };
 </script>

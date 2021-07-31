@@ -7,7 +7,14 @@
  * @return {Function}
  */
 export function throttle(delay, fn) {
-  return fn;
+  let pre = Date.now();
+  return (...args) => {
+    const now = Date.now();
+    if (now - pre >= delay) {
+      pre = Date.now();
+      fn(...args);
+    }
+  };
 }
 
 /**
@@ -19,7 +26,16 @@ export function throttle(delay, fn) {
  * @return {Function}
  */
 export function debounce(delay, fn) {
-  return fn;
+  let timer = null;
+  return (...args) => {
+    if (timer) {
+      clearTimeout(timer);
+      timer = null;
+    }
+    timer = setTimeout(() => {
+      fn(...args);
+    }, delay);
+  };
 }
 
 // babel版本导致直接export default无法使用解构赋值import使用

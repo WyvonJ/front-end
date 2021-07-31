@@ -1,11 +1,10 @@
 <template>
   <div class="computed">
-
   </div>
 </template>
 
 <script>
-// computed计算属性
+// computed
 export default {
   name: 'Computed',
   data() {

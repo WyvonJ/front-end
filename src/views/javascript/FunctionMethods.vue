@@ -1,13 +1,13 @@
 <template>
-  <div class="prototype-chain">
+  <div class="function-methods">
     事件循环
   </div>
 </template>
 
 <script>
-// 原型链
+// 函数方法定义
 export default {
-  name: 'PrototypeChain',
+  name: 'FunctionMethods',
   components: {
 
   },
@@ -20,7 +20,7 @@ export default {
 </script>
 
 <style lang="scss">
-.prototype-chain {
+.function-methods {
 
 }
 </style>

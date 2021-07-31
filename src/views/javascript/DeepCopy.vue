@@ -3,6 +3,9 @@
     <FeButton @click="handlerRecursive">
       递归克隆
     </FeButton>
+    <FeButton @click="handlerRecursiveCircularRef">
+      递归克隆 (循环引用)
+    </FeButton>
   </div>
 </template>
 
@@ -14,7 +17,12 @@ export default {
   name: 'DeepCopy',
   data() {
     return {
-      obj: {
+    };
+  },
+  methods: {
+    // 递归克隆
+    handlerRecursive() {
+      const obj = {
         a: 1,
         b: 'str',
         c: null,
@@ -24,12 +32,17 @@ export default {
         e: [1, 2, 'ss', {
           f: 3,
         }],
-      },
-    };
-  },
-  methods: {
-    handlerRecursive() {
-      const copy = DeepCopy.recursive(this.obj);
+      };
+      const copy = DeepCopy.recursive(obj);
+      console.log(copy);
+    },
+    // 循环引用对象拷贝
+    handlerRecursiveCircularRef() {
+      const circularRefObj = {
+        value: 1,
+      };
+      circularRefObj.target = circularRefObj;
+      const copy = DeepCopy.recursiveCircularRef(circularRefObj);
       console.log(copy);
     },
   },

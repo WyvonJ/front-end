@@ -13,6 +13,9 @@ export default {
 
     };
   },
+  beforeCreate() {
+    console.log(typeof this);
+  },
 };
 </script>
 

@@ -5,6 +5,7 @@ module.exports = {
   },
   extends: [
     'plugin:vue/essential',
+    'plugin:vue/strongly-recommended',
     '@vue/airbnb',
   ],
   parserOptions: {
@@ -16,6 +17,9 @@ module.exports = {
     'no-param-reassign': 'off',
     'no-use-before-define': 'off',
     'no-restricted-syntax': 'off',
+    'no-plusplus': 'off',
+    'eqeqeq': 'off',
+    'vue/html-self-closing': 'off',
   },
   overrides: [
     {

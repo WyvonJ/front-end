@@ -1,16 +1,12 @@
 <template>
-  <div class="prototype-chain">
-    事件循环
+  <div class="array-methods">
   </div>
 </template>
 
 <script>
-// 原型链
+// 数组自带方法实现
 export default {
-  name: 'PrototypeChain',
-  components: {
-
-  },
+  name: 'ArrayMethods',
   data() {
     return {
 
@@ -20,7 +16,6 @@ export default {
 </script>
 
 <style lang="scss">
-.prototype-chain {
-
+.array-methods {
 }
 </style>

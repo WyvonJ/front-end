@@ -31,6 +31,7 @@ export default {
   cursor: pointer;
   border-radius: 4px;
   transition: all 300ms ease;
+  user-select: none;
   &:hover {
     background-color: #42b983;
     color: white;

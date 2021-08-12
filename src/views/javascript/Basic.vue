@@ -1,9 +1,17 @@
 <template>
   <div class="basic">
-    <FeButton @click="handlerTypeof"> typeof返回结果 </FeButton>
-    <FeButton @click="handlerInstanceof"> instanceof返回结果 </FeButton>
-    <FeButton @click="handlerToString"> toString方法 </FeButton>
-    <FeButton @click="handlerTypeConversion"> 类型转换 </FeButton>
+    <FeButton @click="handlerTypeof">
+      typeof返回结果
+    </FeButton>
+    <FeButton @click="handlerInstanceof">
+      instanceof返回结果
+    </FeButton>
+    <FeButton @click="handlerToString">
+      toString方法
+    </FeButton>
+    <FeButton @click="handlerTypeConversion">
+      类型转换
+    </FeButton>
   </div>
 </template>
 
@@ -19,7 +27,7 @@ export default {
     };
   },
   methods: {
-    // typeof返回结果
+    // typeof返回结果 number string boolean undefined function object symbol bigint
     handlerTypeof() {
       console.log(typeof 1); // number
       console.log(typeof 'str'); // string
@@ -29,17 +37,30 @@ export default {
       console.log(typeof null); // object
       console.log(typeof []); // object
       console.log(typeof NaN); // number
+      // 函数返回function, 其他引用类型返回object
+      console.log(typeof Object); // function
+      // 正则表达式为 object
+      console.log(typeof /./); // object
+      // Symbol为symbol
+      console.log(typeof Symbol(1)); // symbol
+      // BigInt为bigint
+      // eslint-disable-next-line
+      console.log(typeof BigInt(999999999999999));
     },
     // instanceof返回结果
     handlerInstanceof() {
       // 只要当前的类出现在实例的原型上, 结果就是true
-      // 不能检测基本数据类型
+      // 缺点1:不能检测基本数据类型
       console.log(1 instanceof Number); // false
       console.log(true instanceof Boolean); // false
       console.log('str' instanceof String); // false
       console.log([] instanceof Array); // true
       console.log(function foo() {} instanceof Function); // true
       console.log({} instanceof Object); // true
+      // 缺点2:所有引用类型在instanceof Object时都为true
+      console.log([] instanceof Object); // true
+      console.log(window instanceof Object); // true
+      console.log(Array instanceof Object); // true
     },
     // toString方法
     handlerToString() {

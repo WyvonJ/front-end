@@ -25,13 +25,13 @@
 export default class PromiseAPlus {
   /**
    * Creates an instance of PromiseAPlus.
-   * @param {Function} func
+   * @param {Function} executor
    * @memberof PromiseAPlus
    */
-  constructor(func) {
+  constructor(executor) {
     // 确保使用函数初始化
-    if (typeof func !== 'function') {
-      throw new TypeError(`Promise resolver ${func} is not a function`);
+    if (typeof executor !== 'function') {
+      throw new TypeError(`Promise resolver ${executor} is not a function`);
     }
     // promise的值
     this.value = null;
@@ -69,7 +69,7 @@ export default class PromiseAPlus {
     };
 
     try {
-      func(resolve, reject);
+      executor(resolve, reject);
     } catch (error) {
       reject(error);
     }
@@ -187,7 +187,7 @@ export default class PromiseAPlus {
  * 如果x是一个thenable, 那么它会试图使promise采用x的状态, 前提是x的行为至少有一点像promise
  * 否则, 它将用x的值执行promise
  * @param {PromiseAPlus} promise
- * @param {any} x
+ * @param {any} x 上一个then方法的返回值
  * @param {Function} resolve
  * @param {Function} reject
  */

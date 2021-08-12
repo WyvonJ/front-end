@@ -1,12 +1,16 @@
 <template>
-  <div class="closure">
+  <div class="ecmascript-9">
+    事件循环
   </div>
 </template>
 
 <script>
-// DOM事件
+// 去重
 export default {
-  name: 'Closure',
+  name: 'Ecmascript9',
+  components: {
+
+  },
   data() {
     return {
 
@@ -16,6 +20,7 @@ export default {
 </script>
 
 <style lang="scss">
-.closure {
+.ecmascript-9 {
+
 }
 </style>

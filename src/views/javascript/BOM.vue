@@ -1,12 +1,12 @@
 <template>
-  <div class="closure">
+  <div class="bom">
   </div>
 </template>
 
 <script>
 // DOM事件
 export default {
-  name: 'Closure',
+  name: 'Bom',
   data() {
     return {
 
@@ -16,6 +16,6 @@ export default {
 </script>
 
 <style lang="scss">
-.closure {
+.bom {
 }
 </style>

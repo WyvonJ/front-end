@@ -35,10 +35,24 @@ export default [
     },
   },
   {
+    path: 'new',
+    name: 'new',
+    component() {
+      return import(/* webpackChunkName: "New" */ '@/views/javascript/New.vue');
+    },
+  },
+  {
     path: 'promise',
     name: 'Promise',
     component() {
       return import(/* webpackChunkName: "Promise" */ '@/views/javascript/Promise.vue');
+    },
+  },
+  {
+    path: 'httprequest',
+    name: 'HTTP请求',
+    component() {
+      return import(/* webpackChunkName: "HttpRequest" */ '@/views/javascript/HttpRequest.vue');
     },
   },
   {
@@ -53,6 +67,13 @@ export default [
     name: '防抖&节流',
     component() {
       return import(/* webpackChunkName: "ThrottleDebounce" */ '@/views/javascript/ThrottleDebounce.vue');
+    },
+  },
+  {
+    path: 'arraymethods',
+    name: '数组方法',
+    component() {
+      return import(/* webpackChunkName: "ArrayMethods" */ '@/views/javascript/ArrayMethods.vue');
     },
   },
 ];

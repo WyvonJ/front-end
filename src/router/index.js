@@ -4,6 +4,7 @@ import Home from '../views/Home.vue';
 import JavaScriptRoutes from './javascript';
 import CssRoutes from './css';
 import VueRoutes from './vue';
+import AlgorithmsRoutes from './algorithms';
 
 console.log('JavaScriptRoutes', JavaScriptRoutes);
 Vue.use(VueRouter);
@@ -40,6 +41,14 @@ const routes = [
       return import(/* webpackChunkName: "vue" */ '../views/Vue.vue');
     },
     children: VueRoutes,
+  },
+  {
+    path: '/algorithms',
+    name: 'Algorithms',
+    component() {
+      return import(/* webpackChunkName: "algorithms" */ '../views/Algorithms.vue');
+    },
+    children: AlgorithmsRoutes,
   },
 ];
 

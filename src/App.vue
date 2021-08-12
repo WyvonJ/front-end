@@ -1,12 +1,23 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/javascript">JavaScript</router-link> |
-      <router-link to="/css">CSS</router-link> |
-      <router-link to="/vue">Vue</router-link>
+      <router-link to="/">
+        Home
+      </router-link> |
+      <router-link to="/algorithms">
+        Algorithms
+      </router-link> |
+      <router-link to="/javascript">
+        JavaScript
+      </router-link> |
+      <router-link to="/css">
+        CSS
+      </router-link> |
+      <router-link to="/vue">
+        Vue
+      </router-link>
     </div>
-    <router-view/>
+    <router-view />
   </div>
 </template>
 

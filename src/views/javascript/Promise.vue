@@ -1,11 +1,26 @@
 <template>
   <div class="promise">
-    <FeButton @click="promisePractise1"> Promise练习1 </FeButton>
-    <FeButton @click="promisePractise2"> Promise练习2 </FeButton>
-    <FeButton @click="promisePractise3"> Promise练习3 </FeButton>
-    <FeButton @click="promisePractise4"> Promise练习4 </FeButton>
-    <FeButton @click="promisePractise5"> Promise练习5 </FeButton>
-    <FeButton @click="promisePractise6"> Promise练习6 </FeButton>
+    <FeButton @click="promisePractise1">
+      Promise练习1
+    </FeButton>
+    <FeButton @click="promisePractise2">
+      Promise练习2
+    </FeButton>
+    <FeButton @click="promisePractise3">
+      Promise练习3
+    </FeButton>
+    <FeButton @click="promisePractise4">
+      Promise练习4
+    </FeButton>
+    <FeButton @click="promisePractise5">
+      Promise练习5
+    </FeButton>
+    <FeButton @click="promisePractise6">
+      Promise练习6
+    </FeButton>
+    <FeButton @click="promisePractise7">
+      Promise练习7
+    </FeButton>
   </div>
 </template>
 
@@ -100,6 +115,40 @@ export default {
           console.log(v);
         });
       console.log(4);
+    },
+    promisePractise7() {
+      const a = 1;
+
+      const p = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          if (a === 1) {
+            resolve('可以');
+          } else {
+            reject(new Error('不得行'));
+          }
+        }, 1000);
+      });
+
+      const likePromise = {
+        then(v) {
+          console.log(v);
+        },
+      };
+
+      const p1 = p.then((value) => {
+        console.log('成功1', value);
+        return likePromise;
+      }, (reason) => {
+        console.log('失败1', reason);
+      });
+
+      const p2 = p1.then((value) => {
+        console.log('成功2', value);
+      }, (reason) => {
+        console.log('失败2', reason);
+      });
+
+      console.log(p2);
     },
   },
 };

@@ -1,12 +1,12 @@
 <template>
-  <div class="closure">
+  <div class="call-apply">
   </div>
 </template>
 
 <script>
-// DOM事件
+// call-apply实现
 export default {
-  name: 'Closure',
+  name: 'CallApply',
   data() {
     return {
 
@@ -16,6 +16,6 @@ export default {
 </script>
 
 <style lang="scss">
-.closure {
+.call-apply {
 }
 </style>

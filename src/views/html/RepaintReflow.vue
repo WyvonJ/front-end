@@ -1,12 +1,12 @@
 <template>
-  <div class="closure">
+  <div class="repaint-reflow">
   </div>
 </template>
 
 <script>
-// DOM事件
+// 重绘和回流
 export default {
-  name: 'Closure',
+  name: 'RepaintReflow',
   data() {
     return {
 
@@ -16,6 +16,6 @@ export default {
 </script>
 
 <style lang="scss">
-.closure {
+.repaint-reflow {
 }
 </style>

@@ -21,6 +21,9 @@
     <FeButton @click="promisePractise7">
       Promise练习7
     </FeButton>
+    <FeButton @click="promisePractise8">
+      Promise练习8
+    </FeButton>
   </div>
 </template>
 
@@ -149,6 +152,36 @@ export default {
       });
 
       console.log(p2);
+    },
+    promisePractise8() {
+      new PromiseAPlus((resolve) => {
+        console.log(1);
+        resolve();
+      }).then(() => {
+        console.log(2);
+      }).then(() => {
+        console.log(3);
+      });
+
+      new PromiseAPlus((resolve) => {
+        console.log(4);
+        resolve();
+      }).then(() => {
+        console.log(5);
+      }).then(() => {
+        console.log(6);
+      });
+
+      new PromiseAPlus((resolve) => {
+        console.log(7);
+        resolve();
+      }).then(() => {
+        console.log(8);
+      }).then(() => {
+        console.log(9);
+      });
+
+      // 1 4 7 2 5 8 3 6 9
     },
   },
 };

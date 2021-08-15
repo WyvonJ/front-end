@@ -76,4 +76,18 @@ export default [
       return import(/* webpackChunkName: "ArrayMethods" */ '@/views/javascript/ArrayMethods.vue');
     },
   },
+  {
+    path: 'prototypechain',
+    name: '原型链',
+    component() {
+      return import(/* webpackChunkName: "PrototypeChain" */ '@/views/javascript/PrototypeChain.vue');
+    },
+  },
+  {
+    path: 'extend',
+    name: '继承',
+    component() {
+      return import(/* webpackChunkName: "Extend" */ '@/views/javascript/Extend.vue');
+    },
+  },
 ];

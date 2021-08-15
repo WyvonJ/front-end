@@ -6,6 +6,15 @@
     <FeButton @click="eventLoop2">
       事件循环2
     </FeButton>
+    <FeButton @click="eventLoop3">
+      事件循环3
+    </FeButton>
+    <FeButton @click="eventLoop4">
+      事件循环4
+    </FeButton>
+    <FeButton @click="eventLoop5">
+      事件循环5
+    </FeButton>
   </div>
 </template>
 
@@ -69,6 +78,85 @@ export default {
       // async1 end
       // promise2
       // setTimeout
+    },
+    eventLoop3() {
+      Promise.resolve().then(() => {
+        // 微任务1
+        console.log('Promise1');
+        // 宏任务2
+        setTimeout(() => {
+          console.log('setTimeout2');
+        }, 0);
+      });
+      // 宏任务1
+      setTimeout(() => {
+        console.log('setTimeout1');
+        // 微任务2
+        Promise.resolve().then(() => {
+          console.log('Promise2');
+        });
+      }, 0);
+      // Promise1 setTimeout1 Promise2 setTimeout2
+
+      // 整个函数中执行完同步部分即Promise.resolve().then和setTimeout之后, 浏览器会去检查微任务队列
+      // 此时被添加到微任务队列中的只有一个 微任务1 ↑
+      // 所以执行该微任务, 打印Promise1, 然后查看宏任务队列
+      // 此时宏任务队列中有宏任务1和刚刚在微任务中加入的宏任务2
+      // 此时从宏任务队列取出一个任务, 打印setTimeout1, 并将微任务2加入微任务队列
+      // 执行微任务2, 打印 Promise2
+      // 清空完微任务队列后, 从宏任务再取一个, 打印setTimeout2
+    },
+    eventLoop4() {
+      async function async1() {
+        console.log(1);
+        await async2();
+        console.log(2);
+        await 3;
+        console.log(3);
+        await 4;
+        console.log(4);
+      }
+
+      async function async2() {
+        console.log(5);
+      }
+
+      async1();
+
+      new Promise((resolve) => {
+        console.log(6);
+        resolve();
+        console.log(7);
+      }).then(() => {
+        console.log(8);
+      }).then(() => {
+        console.log(9);
+      }).then(() => {
+        console.log(10);
+      });
+    },
+    eventLoop5() {
+      new Promise((resolve) => {
+        console.log(1);
+        resolve();
+      }).then(() => {
+        console.log(2);
+      }).then(() => {
+        console.log(3);
+      }).then(() => {
+        console.log(4);
+      });
+
+      new Promise((resolve) => {
+        console.log(5);
+        resolve();
+      }).then(() => {
+        console.log(6);
+      }).then(() => {
+        console.log(7);
+      }).then(() => {
+        console.log(8);
+      });
     },
   },
 };

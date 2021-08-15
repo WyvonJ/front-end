@@ -178,7 +178,22 @@ export default class PromiseAPlus {
     return this.then(null, onRejected);
   }
 
-  // finally() {}
+  /**
+   *
+   * @param {Function} callback
+   * @return {PromiseAPlus}
+   * @memberof PromiseAPlus
+   */
+  finally(callback) {
+    // 因为有第三方实现, 否则可以直接换成PromiseAPlus
+    const P = this.constructor;
+    return this.then(
+      (value) => P.resolve(callback()).then(() => value),
+      (reason) => P.resolve(callback()).then(() => {
+        throw new Error(reason);
+      }),
+    );
+  }
 }
 
 /**
